@@ -1,7 +1,15 @@
+qarket = {
+	baseURL: "/projects/qarket"
+};
+
 yepnope({
   test : Modernizr.inputtypes && Modernizr.inputtypes.date,
   nope : [
-	'jquery-ui-1.8.18.js',
-	'jquery-ui-1.8.18.css'
-  ]
+	qarket.baseURL + '/js/jquery-ui-1.8.18.js',
+	qarket.baseURL + '/css/jquery-ui-1.8.18.css'
+  ],
+  complete: function() {
+	$( ".hasDatePicker" ).datepicker();
+  }
 });
+

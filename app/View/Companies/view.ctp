@@ -51,13 +51,13 @@
 			<div class="control-group">
 				<label class="control-label" for="input03">Start Date</label>
 			  	<div class="controls">
-			    	<input type="date" class="input-xlarge" id="input03">
+			    	<input type="date" class="input-xlarge hasDatePicker" id="input03">
             	</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input04">End Date</label>
 			  	<div class="controls">
-			    	<input type="date" class="input-xlarge" id="input04">
+			    	<input type="date" class="input-xlarge hasDatePicker" id="input04">
             	</div>
 			</div>
 			<div class="control-group">
