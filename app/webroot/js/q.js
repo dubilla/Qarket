@@ -1,5 +1,5 @@
 qarket = {
-	baseURL: "/projects/qarket"
+	baseURL: "/dev"
 };
 
 yepnope({
