@@ -6,7 +6,7 @@
 		?>
 		<button type="submit" class="btn">Login</button>
 	</form>
-	<span>Not signed up yet? <a href="#register" data-toggle="modal">Register</a>now</span>
+	<span>Not signed up yet? <a href="#register" data-toggle="modal">Register</a> now</span>
 </div>
 
 <div class="hero-unit">
