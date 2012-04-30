@@ -4,6 +4,10 @@ class CompaniesController extends AppController {
 	public $name = 'Companies';
 	public $helpers = array('Html', 'Form');
 	
+	function index() {
+		
+	}
+	
 	function view() {
 		Controller::loadModel('Address');
 		Controller::loadModel('CompanyOffer');
