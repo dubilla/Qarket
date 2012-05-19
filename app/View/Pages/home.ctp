@@ -9,10 +9,22 @@
 	<span>Not a user? <a href="#register" data-toggle="modal">Register</a> now</span>
 </div>
 
-<div class="hero-unit">
-        <h1>Welcome to Qarket</h1>
-        <p>Collect, trade, and cash in on deals from nearby bars to national chain restaurants.  Join now to start saving and experiencing your neighborhood in a new way.  Come see what's waiting in your local Qarket.</p>
-        <p><a href="users/register" class="btn btn-primary btn-large">Register »</a></p>
+<div id="myCarousel" class="carousel">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item">
+		<?php echo $this->Html->image('carousel/carousel1.jpg', array('alt' => 'Image'))?>
+    </div>
+    <div class="item">
+		<?php echo $this->Html->image('carousel/carousel2.jpg', array('alt' => 'Image'))?>
+    </div>
+    <div class="item">
+		<?php echo $this->Html->image('carousel/carousel3.jpg', array('alt' => 'Image'))?>
+    </div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
 
 <div class="row">
