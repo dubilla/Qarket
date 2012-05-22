@@ -46,7 +46,7 @@
 				    echo $this->Form->input('valildEnd');
 				    echo $this->Form->input('validLength');
 				?>
-				<button type="submit" class="btn btn-large btn-primary">Save</button>
+				<button type="submit" class="btn btn-large btn-primary">Savec</button>
 			</fieldset>
 		</form>
 	</div>
