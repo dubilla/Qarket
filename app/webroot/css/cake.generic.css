@@ -4082,16 +4082,42 @@ a.thumbnail:hover {
 }
 
 /* Custom Styles */
+.logo {
+	float: left
+}
 .login {
 	overflow: hidden;
+	float: right;
 }
 .login .login-form {
 	float: right;
 	width: auto;
 }
+.login-form label {
+	display: none;
+}
+.login .register {
+	line-height: 2.6;
+}
+.login .register .btn {
+	margin-right: 3px;
+}
 .form-inline .input {
 	float: left;
 	clear: none;
+}
+
+@media screen
+and (max-width: 480px) {
+	.logo {
+		float: none;
+		text-align: center;
+		margin-bottom: 1.5em;
+	}
+	.login {
+		float: none;
+		text-align: center;
+	}
 }
 
 /* Boostrap */
