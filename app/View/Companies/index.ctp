@@ -1,14 +1,3 @@
-<div class="login">
-	<form action="companies/login" method="post" class="login-form form-inline">
-		<?php
-		    echo $this->Form->input('username', array('class'=>'input-small'));
-		    echo $this->Form->input('password', array('class'=>'input-small'));
-		?>
-		<button type="submit" class="btn">Login</button>
-	</form>
-	<span>Not signed up yet? <a href="#register" data-toggle="modal">Register</a> now</span>
-</div>
-
 <div class="hero-unit">
         <h1>Qarket for Companies</h1>
         <p>Get your customers into your brand and have them stick.  Have new customers find you via your loyal ones, and turn your new ones into your future loyal ones.</p>

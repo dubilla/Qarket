@@ -1,6 +1,18 @@
 qarket = {
-	baseURL: "/dev"
+	baseURL: "",
+	setBaseURL: function() {
+		if (window.location.hostname == "localhost") {
+			this.baseURL = "/projects/qarket";
+		} else {
+			this.baseURL = "/dev";
+		}
+	},
+	init: function() {
+		this.setBaseURL();
+	}
 };
+
+qarket.init();
 
 yepnope({
   test : Modernizr.inputtypes && Modernizr.inputtypes.date,

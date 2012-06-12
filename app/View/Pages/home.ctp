@@ -1,17 +1,3 @@
-<div class="logo">
-	Qarket Logo Here
-</div>
-<div class="login">
-	<form action="users/login" method="post" class="login-form form-inline">
-		<?php
-		    echo $this->Form->input('username', array('class'=>'input-small', 'placeholder'=>'Username'));
-		    echo $this->Form->input('password', array('class'=>'input-small', 'placeholder'=>'Password'));
-		?>
-		<button type="submit" class="btn btn-primary">Login</button>
-	</form>
-	<span class="register"><button class="btn btn-info" data-toggle="modal">Register</button> or </span>
-</div>
-
 <div id="myCarousel" class="carousel">
   <!-- Carousel items -->
   <div class="carousel-inner">
