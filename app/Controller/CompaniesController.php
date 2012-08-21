@@ -7,30 +7,43 @@ class CompaniesController extends AppController {
 	function index() {
 		
 	}
+
+	function login() {
+		if ($this->request->is('post')) {
+			$this->loadModel("Profile");
+			$profile = $this->Profile->findByEmail($this->request->data["username"]);
+			$company = $this->Company->find('all', array('Company.profileID' => $profile["Profile"]["profileID"]));
+			if ($profile != "") {
+				if ($profile["Profile"]["password"] == $this->request->data["password"]) {
+					$this->Session->write('company', $company);
+					$this->Session->write('profile', $profile);
+					$this->Session->setFlash('You are now signed in as ' . $profile["Profile"]["name"]);
+					exit();
+					$this->redirect(array('controller'=> 'companies', 'action' =>'view'));
+				} else {
+					$this->Session->setFlash('That password is incorrect.');
+				}
+			} else {
+				$this->Session->setFlash('That username could not be found.');
+			}
+		}
+	}
 	
 	function view() {
-		Controller::loadModel('Address');
 		Controller::loadModel('CompanyOffer');
-		// Temporarily setting the company in the session here until the company login process is finalized
-		$company = $this->Company->find('first');
-		if ($company && $addressID = $company["Company"]["addressID"]) {
-			$this->set('address', $this->Address->find('first'));
-		}
-		if ($company) {
-			$this->set('currentDeals', $this->CompanyOffer->getCurrentDeals());
-			$this->set('expiredDeals', $this->CompanyOffer->getExpiredDeals());
-		}
-		$this->Session->write('company', $company);
-		$this->set('company', $this->Session->read("company"));
+		$currentOffers = $this->CompanyOffer->getCurrentOffers($this->Company->user["userID"]);
+		$expiredOffers = $this->CompanyOffer->getExpiredOffers();
+		$this->set('offers', $currentOffers);
+		$this->set('user', $this->Session->read("user"));
 	}
 
-/*
 	function register() {
 		if ($this->request->is('post')) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->write('user', $user);
+			if ($this->Company->save($this->request->data)) {
+				$company = $this->request->data;
+				$this->Session->write('user', $company);
 				$this->Session->setFlash('Your registration information was accepted.');
-				$this->redirect(array('controller'=> 'users', 'action' =>'view'));
+				$this->redirect(array('controller'=> 'companies', 'action' =>'view'));
  			} else {
 				$this->Session->setFlash('There was a problem with your registration');
 			}
@@ -46,26 +59,5 @@ class CompaniesController extends AppController {
 			)
 		));
 	}
-	
-	function login() {
-		if ($this->request->is('post')) {
-			$user = $this->User->findByUsername($this->request->data["username"]);
-			if ($user != "") {
-				if ($user["User"]["password"] == $this->request->data["password"]) {
-					$this->Session->write('user', $user);
-					$this->Session->setFlash('You are now signed in as ' . $user["User"]["username"]);
-					$this->redirect(array('controller'=> 'users', 'action' =>'view'));
-				} else {
-					$this->Session->setFlash('That password is incorrect.');
-				}
-			} else {
-				$this->Session->setFlash('That username could not be found.');
-			}
-		}
-	}
-	
-	function view() {
-		$this->set('user', $this->Session->read("user"));
-	}
-*/
+
 }

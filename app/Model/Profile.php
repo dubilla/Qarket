@@ -1,35 +1,13 @@
 <?php
 
-class User extends AppModel {
-	public $name = 'User';
-	public $useTable = 'User';
-	public $useDbConfig = 'qarket';
-	
-	public $schema = array(
-		'first_name' => array(
-            'type' => 'string',
-            'length' => 30
-        ),
-        'last_name' => array(
-            'type' => 'string',
-            'length' => 30
-        ),
-		'userName' => array(
-			'type' => 'string',
-			'length' => 30
-		),
-        'email' => array(
-            'type' => 'string',
-            'length' => 50
-        ),
-        'password' =>  array(
-            'type' => 'string',
-            'length' => 20
-        )
-	);
+class Profile extends AppModel {
+	public $name = 'Company';
+	public $useTable = 'Profile';
+	public $primaryKey = 'profileID';
 
+/*
 	public $validate = array(
-		'userName' => array(
+		'username' => array(
 			'rule' => '/^[a-z0-9]{6,40}$/i',
 			'message' => 'This field cannot be left blank.',
 			'required' => true
@@ -45,7 +23,8 @@ class User extends AppModel {
 			'required' => true
 		)
 	);
-	/*
+
+	
 	function beforeValidate() {
 		if (!$this->id) {
 	    	if ($this->findByUsername($this->data['User']['username'])) {
@@ -55,5 +34,5 @@ class User extends AppModel {
 	  	}
 	  	return true;
 	}
-	*/
+*/
 }

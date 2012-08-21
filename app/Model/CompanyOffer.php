@@ -2,47 +2,17 @@
 
 class CompanyOffer extends AppModel {
 	public $name = 'CompanyOffer';
-	public $useTable = 'CompanyOffer';
-	public $primaryKey = 'companyOfferID';
 	
-	function getCurrentDeals() {
-		$currentDeals = $this->find('all');
-		return $currentDeals;
-	}
+	public $useDbConfig = 'qarket';
 	
-	function getExpiredDeals() {
-		$expiredDeals = $this->find('all');
-		return $expiredDeals;
+	function getCurrentOffers($companyID) {
+		$offers = $this->find('all', array('companyID' => $companyID));
+		$this->set("offers", $offers);
 	}
 
-/*
-	public $validate = array(
-		'username' => array(
-			'rule' => '/^[a-z0-9]{6,40}$/i',
-			'message' => 'This field cannot be left blank.',
-			'required' => true
-		),
-		'password' => array(
-			'rule' => '/^[a-z0-9]{6,40}$/i',
-			'message' => 'This field cannot be left blank.',
-			'required' => true
-		),
-		'email' => array(
-			'rule' => 'email',
-			'message' => 'Please supply a valid email address.',
-			'required' => true
-		)
-	);
-
-	
-	function beforeValidate() {
-		if (!$this->id) {
-	    	if ($this->findByUsername($this->data['User']['username'])) {
-	      		$this->invalidate('username_unique');
-	      		return false;
-	    	}
-	  	}
-	  	return true;
+	function getExpiredOffers($companyID) {
+		// Probably need a new API here
+		// Let's parse this out on our side til they come back to us
+		$offers = $this->CompanyOffer->find('all', array('companyID' => $companyID));
 	}
-*/
 }

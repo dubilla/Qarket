@@ -34,7 +34,7 @@
 	</div>
 </div>
 
-<div id="register" class="modal fade" style="display: none;">
+<div id="register" class="modal fade hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Register for Qarket</h3>

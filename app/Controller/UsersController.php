@@ -6,7 +6,9 @@ class UsersController extends AppController {
 
 	function register() {
 		if ($this->request->is('post')) {
-			if ($this->User->save($this->request->data)) {
+			$result = $this->User->save($this->request->data);
+			if ($result) {
+				$user = $this->request->data;
 				$this->Session->write('user', $user);
 				$this->Session->setFlash('Your registration information was accepted.');
 				$this->redirect(array('controller'=> 'users', 'action' =>'view'));
@@ -16,31 +18,36 @@ class UsersController extends AppController {
 		}
 	}
 
-	function knownusers() {
-		$this->set('knownusers', $this->User->find(
-			'all',
-			array(
-				'fields' => array('userID','username', 'first_name', 'last_name'),
-				'order' => 'userID DESC'  
-			)
-		));
-	}
-	
 	function login() {
 		if ($this->request->is('post')) {
-			$user = $this->User->findByUsername($this->request->data["username"]);
-			if ($user != "") {
-				if ($user["User"]["password"] == $this->request->data["password"]) {
+			$result = $this->User->find("all", $this->request->data);
+			$response = $result["User"]["responseHeader"];
+			if ($response != "") {
+				// Success
+				if ($response["responseCode"] == 0) {
+					$user = $response["validation"];
 					$this->Session->write('user', $user);
 					$this->Session->setFlash('You are now signed in as ' . $user["User"]["username"]);
 					$this->redirect(array('controller'=> 'users', 'action' =>'view'));
-				} else {
+				// Invalid username
+				} else if ($response["responseCode"] == 1) {
+					$this->Session->setFlash('That username could not be found.');
+					$this->redirect(array('controller'=> 'users', 'action' =>'login'));
+				// Invalid password
+				} else if ($response["responseCode"] == 2) {
 					$this->Session->setFlash('That password is incorrect.');
+					$this->redirect(array('controller'=> 'users', 'action' =>'login'));
+				// Unknown user
+				} else {
+					$this->Session->setFlash('There was a server error.  Please try again.');
 				}
-			} else {
-				$this->Session->setFlash('That username could not be found.');
 			}
 		}
+	}
+	
+	function logout() {
+		$this->Session->destroy();
+		$this->redirect('/');
 	}
 	
 	function view() {

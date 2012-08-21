@@ -1,10 +1,10 @@
-<h1 class="well">Dan's Burgers <?php // echo $company["Company"]["companyName"] ?></h1>
+<h1 class="well"><?php echo $user["cname"] ?></h1>
 <address>
-	<?php echo $address["Address"]["street"] ?><br />
-	<?php echo $address["Address"]["city"] . ', ' . $address["Address"]["street"] ?>
+	<?php echo $user["street"] ?><br />
+	<?php echo $user["city"] . ', ' . $user["state"] . ' ' . $user["zip"] ?>
 </address>
 <p>
-	<?php echo $company["Company"]["description"] ?>
+	<?php echo $user["desc"] ?>
 </p>
 
 <div class="row deals-overview">

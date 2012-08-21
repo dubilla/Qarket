@@ -25,6 +25,7 @@ yepnope({
   }
 });
 
+// Main page carousel
 $('.carousel').carousel({
   interval: 3500
-})
+});

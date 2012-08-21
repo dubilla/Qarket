@@ -1,1 +1,3 @@
-<h1>Welcome <?php echo $user["User"]["username"] ?></h1>
+<h1>Welcome <?php echo $user["userName"] ?></h1>
+
+<p>Download the Qarket app now!</p>

@@ -17,6 +17,10 @@
  */
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+
+// Get user session
+$user = $this->Session->read('user');
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,16 +47,26 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<div class="logo">
 				Qarket Logo Here
 			</div>
-			<div class="login">
-				<form action="users/login" method="post" class="login-form form-inline">
+			<?php if (!$user) { ?>
+				<div class="login">
+					<?php
+					$role = "users/";
+					if ($this->params->controller == "companies") {
+						$role = "";
+					}
+				?>
+				<form action="<?= $role ?>login" method="post" class="login-form form-inline">
 					<?php
 					    echo $this->Form->input('username', array('class'=>'input-small', 'placeholder'=>'Username'));
 					    echo $this->Form->input('password', array('class'=>'input-small', 'placeholder'=>'Password'));
 					?>
 					<button type="submit" class="btn btn-primary">Login</button>
 				</form>
-				<span class="register"><button class="btn btn-info" data-toggle="modal">Register</button> or </span>
+				<a href="#register" class="btn register btn-info" data-toggle="modal">Register</a> or </span>
 			</div>
+			<?php } else { ?>
+				<div class="profile" style="float:right;">Welcome, <?= $user["userName"] ?> | <a href="<?php echo $this->Qarket->baseURL ?>users/logout">Sign Out</a></div>
+			<?php } ?>
 		</div>
 		<div class="content">
 
