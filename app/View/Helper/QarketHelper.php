@@ -33,7 +33,7 @@ App::uses('Helper', 'View');
 class QarketHelper extends AppHelper {
 	public $baseURL = "";
 	function __construct() {
-		if (strpos($_SERVER["REDIRECT_URL"], "localhost")) {
+		if (strpos($_SERVER["HTTP_HOST"], "localhost") > -1) {
 			$this->baseURL = "http://localhost/projects/qarket/";
 		} else {
 			$this->baseURL = "http://qarket.com/dev/";

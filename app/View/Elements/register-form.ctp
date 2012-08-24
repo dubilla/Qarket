@@ -1,5 +1,4 @@
-<p>Please fill out the form below to register an account.</p>
-<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="<?= $this->Qarket->baseURL ?>users/register" method="post">
 	<?php
 	    echo $this->Form->input('first_name');
 	    echo $this->Form->input('last_name');

@@ -40,17 +40,6 @@
 		<h3>Register for Qarket</h3>
 	</div>
 	<div class="modal-body">
-		<form action="users/register" method="post" class="modal-register">
-			<p>Please fill out the form below to register an account.</p>
-			<?php
-			    echo $this->Form->input('first_name');
-			    echo $this->Form->input('last_name');
-			 	echo $this->Form->input('username', array('after' => $this->Form->error
-			       ('username_unique', 'The username is taken. Please try again.')));
-			    echo $this->Form->input('email');
-			    echo $this->Form->input('password');
-			?>
-			<button type="submit" class="btn btn-large btn-primary">Register</button>
-		</form>
+		<?= $this->element('register-form'); ?>
 	</div>
 </div>
