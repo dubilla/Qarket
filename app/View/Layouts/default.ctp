@@ -55,7 +55,7 @@ $user = $this->Session->read('user');
 						$role = "";
 					}
 				?>
-				<form action="<?= $role ?>login" method="post" class="login-form form-inline">
+				<form action="<?= $this->Qarket->baseURL . $role ?>login" method="post" class="login-form form-inline">
 					<?php
 					    echo $this->Form->input('username', array('class'=>'input-small', 'placeholder'=>'Username'));
 					    echo $this->Form->input('password', array('class'=>'input-small', 'placeholder'=>'Password'));
