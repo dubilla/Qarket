@@ -46,7 +46,7 @@ class UsersController extends AppController {
 	}
 	
 	function logout() {
-		$this->Session->destroy();
+		$this->Session->delete('user');
 		$this->redirect('/');
 	}
 	
