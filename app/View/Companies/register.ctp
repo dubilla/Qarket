@@ -1,5 +1,4 @@
-<?php // Need to use the Qarket helper for the action here ?>
-<form action="/projects/qarket/companies/register" method="post">
+<form action="<?= $this->Qarket->baseURL ?>qarket/companies/register" method="post">
 	<p>Please fill out the form below to register an account.</p>
 	<?php
 	 	echo $this->Form->input('username', array('after' => $this->Form->error
