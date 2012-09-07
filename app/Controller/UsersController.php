@@ -27,7 +27,7 @@ class UsersController extends AppController {
 				if ($response["responseCode"] == 0) {
 					$user = $response["validation"];
 					$this->Session->write('user', $user);
-					$this->Session->setFlash('You are now signed in as ' . $user["User"]["username"]);
+					$this->Session->setFlash('You are now signed in as ' . $user["userName"]);
 					$this->redirect(array('controller'=> 'users', 'action' =>'view'));
 				// Invalid username
 				} else if ($response["responseCode"] == 1) {

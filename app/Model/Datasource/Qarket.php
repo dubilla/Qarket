@@ -111,7 +111,7 @@ class Qarket extends DataSource {
 			    $salt = sha1(md5($password));
 				$hash = hash('sha256',$salt.$password);
 				// The hash is what we want here
-				$param = array('p' => $hash);
+				$data["p"] = $hash;
 				$json = $this->Http->get($this->config["url"] . 'users/' . $data['username'], $data);
 				break;
 			case "Company":
